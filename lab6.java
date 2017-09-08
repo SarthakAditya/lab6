@@ -95,7 +95,7 @@ class knight
 		if(this.box.empty())
 		{
 			this.flag=1;
-			throw new StackEmptyException("StackEmptyException:​ ​Stack​ ​Empty​ ​exception");
+			throw new StackEmptyException("StackEmptyException: Stack Empty exception");
 		}
 
 	}
@@ -121,11 +121,11 @@ class knight
 	{
 		String name=kn.get(index).name;
 		kn.remove(kn.get(index));
-		throw new OverlapException("OverlapException:​ ​Knights​ ​Overlap​ ​Exception "+name);
+		throw new OverlapException("OverlapException: Knights Overlap Exception "+name);
 	}
 	public void col2(ArrayList<knight> kn) throws QueenFoundException
 	{
-		throw new QueenFoundException("QueenFoundException:​ ​Queen​ ​has​ ​been​ ​Found.​ ​Abort!");
+		throw new QueenFoundException("QueenFoundException: Queen has been Found. Abort!");
 	}
 	public int check(queen q,int x,int y)
 	{
@@ -139,16 +139,23 @@ class knight
 	public void getout(PrintWriter w)throws NonCoordinateException
 	{
 		String c[]=new String[2];
-		c=this.box.pop().split(" ");
+		String temp="";
+		int x=0;
+		temp=this.box.pop();
+		c=temp.split(" ");
 		if(!(c[0].equals("Coordinate")))
 		{
+			if(c[0].equals("String"))
+			{
+				c[1]=temp.substring(7);
+			}
 			this.cr=0;
 			throw new NonCoordinateException("NonCoordinateException: Not a coordinate Exception "+c[1]);
 		}
 		else
 		{
 			this.cr=1;
-			w.println("No​ exception "+ c[1]+" "+c[2]);
+			w.println("No exception "+ c[1]+" "+c[2]);
 			this.x=Integer.parseInt(c[1]);
 			this.y=Integer.parseInt(c[2]);			
 		}
@@ -268,3 +275,4 @@ public class lab6 {
 	}
 
 }
+
